@@ -20,11 +20,8 @@ const doubleLoop = (array, total) => {
 console.log("doubleLoop tests")
 console.log("\n")
 console.log(doubleLoop([10, 15, 3, 7], 17))
-console.log("\n")
 console.log(doubleLoop([1, 8, 10, 21], 19))
-console.log("\n")
 console.log(doubleLoop([3, 7, 8, 3, 6, 1], 15))
-console.log("\n")
 console.log(doubleLoop([3, 7, 8, 3, 6, 1], 2))
 console.log("\n")
 
@@ -46,11 +43,8 @@ const singleLoop = (array, total) => {
 console.log("singleLoop tests")
 console.log("\n")
 console.log(singleLoop([10, 15, 3, 7], 17))
-console.log("\n")
 console.log(singleLoop([1, 8, 10, 21], 19))
-console.log("\n")
 console.log(singleLoop([3, 7, 8, 3, 6, 1], 15))
-console.log("\n")
 console.log(singleLoop([3, 7, 8, 3, 6, 1], 2))
 console.log("\n")
 
@@ -67,9 +61,6 @@ const singlePass = (array, total) => {
 
 console.log("singlePass tests\n")
 console.log(singlePass([10, 15, 3, 7], 17))
-console.log("\n")
 console.log(singlePass([1, 8, 10, 21], 19))
-console.log("\n")
 console.log(singlePass([3, 7, 8, 3, 6, 1], 15))
-console.log("\n")
 console.log(singlePass([3, 7, 8, 3, 6, 1], 2))

@@ -1,7 +1,7 @@
 # Algorithmes de tri et optimisation de parcours de liste
 
 ## Dossier Algorithmes de tri
-* Ce dossier contient une modélisation de différents algorithmes de tri dans le fichier `tri.js`. Les algorithmes de tri présents sont : tri à bulles, tri par insertion, tri par sélection, tri rapide, tri par fusion
+* Ce dossier contient une modélisation de différents algorithmes de tri dans le fichier `tri.js`. Les algorithmes de tri présents sont : tri à bulles, tri par insertion, tri par sélection, tri rapide, tri par fusion, tri par tas, tri de Shell.
 * Les autres fichiers comprennent la définition d'une classe SortedArray, d'une fonction annexe "swap" qui permet d'inverser deux éléments dans un array, et 3 sets de données.
 * 3 sets de données de longueurs différentes sont disponibles : `shortdata.txt`, `data.txt` et `longdata.txt`.
 * Pour exécuter le programme, lancer la commande `$ node tri.js nom_du_set_de_données.txt` dans l'interface de commandes.

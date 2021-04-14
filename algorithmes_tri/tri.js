@@ -156,12 +156,74 @@ fs.readFile(fileName, 'utf8', (error, data) => {
   mergeSort.controlTurns = count;  
   console.log(`Tri par fusion : ${mergeSort.controlTurns} comparaisons : ${mergeSortProcess(mergeSort.array)}`);
 
-  //Tri Smoothsort
+  //Tri par tas
 
+  //Dans la fonction de tamisage, on décompose un array de longueur n en "arbres" où un élément à l'index k est le parent de deux éléments aux index 2k et 2k+1.
+  //On échange le noeud racine à l'index k avec le plus grand de ses enfants.
 
-
-  //Tri Timsort
-
+  const sieve = (givenArray, node, n) => {
+      let k = node;
+      let j = 2 * k;
+    while (j <= n) {
+      givenArray.controlTurns++;
+      if ((j < n) && (givenArray.array[j] < givenArray.array[j + 1]))
+          j++;
+      if (givenArray.array[k] < givenArray.array[j]) {
+          functions.swap(givenArray.array, k, j);
+          k = j;
+          j = 2 * k;
+      } else
+          break;
+      }
+  }
   
+  //On répète la fonction de tamisage en prenant des arrays de plus en plus petits : ainsi, l'élément le plus grand est à chaque fois sorti de la boucle,
+  // et le tri reprend sur le reste des éléments.
+
+  const heapSortProcess = (givenArray) => {
+      for (let i = givenArray.array.length >> 1; i >= 0; i--)
+          sieve(givenArray, i, givenArray.array.length - 1);
+      for (let i = givenArray.array.length - 1; i >= 1; i--) {
+          functions.swap(givenArray.array, i, 0);
+          sieve(givenArray, 0, i - 1);
+      }
+  }
+
+  let heapSort = new arrayClass.SortedArray(data.split(" ").map(number => Number(number)));
+  heapSortProcess(heapSort);
+  console.log(`Tri par tas : ${heapSort.controlTurns} comparaisons : ${heapSort.array}`);
+
+  //Tri de Shell
+
+  //On compare des éléments entre eux, espacés d'un index donné, qui est de plus en plus petit.
+  //Pour ce faire, on prend chacun des espacements (pré-déterminés mathématiquement, indiqués dans la constante spacing) et on leur applique le raisonnement suivant
+  // (par exemple, en prenant l'espacement 4 sur un array d'une longueur 15) :
+  // On regarde si array[0] <= array[4]. Si oui, on ne fait rien.
+  // Si non, on échange array[0] et array[4].
+  // On reproduit le processus en comparant 1 / 5, 2 / 6 etc.jusqu'à 10/14.
+  // A chaque fois, on compare tous les éléments espacés de 4 en partant de l'indice le plus haut, donc on va comparer 10/14, puis 6/10, puis 2/6 (d'où la boucle while).
+  // Ensuite, on passe à l'espacement de 1.
+
+  const spacing = [701, 301, 132, 57, 23, 10, 4, 1];
+
+  const shellSortProcess = (givenArray) => {
+    spacing.forEach(element => {
+      for (i = element; i < givenArray.array.length; i++){
+        let temp = givenArray.array[i],
+          j = i;
+        while (j >= element && givenArray.array[j - element] > temp) {
+          givenArray.array[j] = givenArray.array[j - element];
+          j -= element;
+          givenArray.array[j] = temp;
+        }
+        givenArray.controlTurns++;
+      }
+    });
+    return givenArray
+  }
+  
+  let shellSort = new arrayClass.SortedArray(data.split(" ").map(number => Number(number)));
+  shellSortProcess(shellSort);
+  console.log(`Tri de Shell : ${shellSort.controlTurns} comparaisons : ${shellSort.array}`);
 
 });
