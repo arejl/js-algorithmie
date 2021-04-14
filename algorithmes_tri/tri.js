@@ -161,7 +161,7 @@ fs.readFile(fileName, 'utf8', (error, data) => {
   //Dans la fonction de tamisage, on décompose un array de longueur n en "arbres" où un élément à l'index k est le parent de deux éléments aux index 2k et 2k+1.
   //On échange le noeud racine à l'index k avec le plus grand de ses enfants.
 
-  const sieve = (givenArray, node, n) => {
+  const _sieve = (givenArray, node, n) => {
       let k = node;
       let j = 2 * k;
     while (j <= n) {
@@ -182,10 +182,10 @@ fs.readFile(fileName, 'utf8', (error, data) => {
 
   const heapSortProcess = (givenArray) => {
       for (let i = givenArray.array.length >> 1; i >= 0; i--)
-          sieve(givenArray, i, givenArray.array.length - 1);
+          _sieve(givenArray, i, givenArray.array.length - 1);
       for (let i = givenArray.array.length - 1; i >= 1; i--) {
           functions.swap(givenArray.array, i, 0);
-          sieve(givenArray, 0, i - 1);
+          _sieve(givenArray, 0, i - 1);
       }
   }
 
